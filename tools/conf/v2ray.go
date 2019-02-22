@@ -271,10 +271,14 @@ func (c *OutboundDetourConfig) Build() (*core.OutboundHandlerConfig, error) {
 	}, nil
 }
 
-type StatsConfig struct{}
+type StatsConfig struct{
+	TrackIP bool `json:"trackIp"`
+}
 
 func (c *StatsConfig) Build() (*stats.Config, error) {
-	return &stats.Config{}, nil
+	return &stats.Config{
+		TrackIp: c.TrackIP,
+	}, nil
 }
 
 type Config struct {
